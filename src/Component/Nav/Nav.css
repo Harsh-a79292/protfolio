@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: rgb(17, 20, 23);
+}
+
+nav {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+ background-color: rgb(17, 20, 23);
+}
+
+nav h1 {
+  font-size: 30px;
+  background: linear-gradient(to right, rgb(175, 8, 158), rgb(228, 8, 232));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hide Checkbox permanently */
+.menu-toggle-input {
+  display: none;
+}
+
+/* Desktop Menu Styling */
+.desktopmenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+
+/* Nav links styling */
+nav ul li a,
+nav ul a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Hover & Active Effects */
+nav ul a:hover,
+nav ul a.active {
+  background-color: rgba(5, 189, 217, 0.8);
+  border-bottom: 2px solid rgb(222, 233, 235);
+}
+
+/* Hamburger (Desktop par hidden) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+ 
+}
+
+.ham {
+  width: 32px;
+  height: 3px;
+  background-color: aliceblue;
+  border-radius: 2px;
+   transition: all 0.5s ease;
+}
+
+/* Mobile Dropdown Menu (Default Hidden) */
+.mobilemenu {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 100%;
+  background-color: rgb(17, 20, 23);
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 20px;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================== */
+/* 750px SE CHOTI SCREEN (MOBILE VIEW) KE LIYE    */
+/* ============================================== */
+@media (max-width: 750px) {
+  .desktopmenu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* When checkbox is checked, show mobile menu */
+  .menu-toggle-input:checked ~ .mobilemenu {
+    display: flex;
+  }
+}

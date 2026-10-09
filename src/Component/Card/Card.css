@@ -1,0 +1,634 @@
+/* =========================================
+   PROFESSIONAL SKILL CARD
+========================================= */
+
+.pro-skill-card {
+
+    position: relative;
+
+    width: 100%;
+    max-width: 390px;
+    min-height: 300px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #101415;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    transform-style: preserve-3d;
+
+    border: 1px solid rgba(114, 230, 238, 0.18);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.5);
+
+    transition:
+        transform 0.6s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.6s ease,
+        border-color 0.6s ease;
+}
+
+
+/* =========================================
+   ANIMATED GRADIENT BORDER
+========================================= */
+
+.pro-skill-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: inherit;
+
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            #72e6ee,
+            transparent 20%,
+            transparent 45%,
+            #e94791,
+            transparent 70%
+        );
+
+    animation:
+        cardBorder 5s linear infinite;
+
+    z-index: -2;
+}
+
+
+/* =========================================
+   INNER DARK LAYER
+========================================= */
+
+.pro-skill-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151a1c,
+            #0d1011
+        );
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   BACKGROUND GRID
+========================================= */
+
+.card-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.15;
+
+    background-image:
+        linear-gradient(
+            rgba(114,230,238,0.15) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(114,230,238,0.15) 1px,
+            transparent 1px
+        );
+
+    background-size: 25px 25px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
+    z-index: 0;
+
+    animation: gridMove 10s linear infinite;
+}
+
+
+/* =========================================
+   CARD ORBS
+========================================= */
+
+.card-orb {
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    filter: blur(55px);
+
+    opacity: 0.15;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.orb-one {
+
+    background: #72e6ee;
+
+    top: -70px;
+    right: -50px;
+
+    animation:
+        floatingOrb 5s ease-in-out infinite;
+}
+
+
+.orb-two {
+
+    background: #e94791;
+
+    bottom: -80px;
+    left: -60px;
+
+    animation:
+        floatingOrb 6s ease-in-out infinite reverse;
+}
+
+
+/* =========================================
+   SHINE
+========================================= */
+
+.card-shine {
+
+    position: absolute;
+
+    width: 80px;
+    height: 150%;
+
+    top: -20%;
+
+    left: -150px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.08),
+            transparent
+        );
+
+    transform: rotate(20deg);
+
+    transition: 0.8s;
+
+    z-index: 4;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.card-inner {
+
+    position: relative;
+
+    z-index: 5;
+
+    padding: 28px;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   TOP
+========================================= */
+
+.card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.skill-icon {
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    color: #72e6ee;
+
+    font-size: 25px;
+
+    background:
+        rgba(114,230,238,0.08);
+
+    border:
+        1px solid rgba(114,230,238,0.25);
+
+    box-shadow:
+        inset 0 0 15px rgba(114,230,238,0.05),
+        0 0 15px rgba(114,230,238,0.08);
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.skill-number {
+
+    color: rgba(114,230,238,0.3);
+
+    font-size: 40px;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.card-inner h3 {
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+
+    line-height: 1.25;
+
+    letter-spacing: 0.5px;
+
+    transition:
+        color 0.4s ease,
+        text-shadow 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.skill-description {
+
+    margin: 0 0 25px;
+
+    color: #8f9b9d;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    max-width: 300px;
+
+    transition:
+        color 0.4s ease;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.skill-progress {
+
+    margin-top: auto;
+
+    margin-bottom: 22px;
+}
+
+
+.progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #6f7b7d;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.progress-info span:last-child {
+
+    color: #72e6ee;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 4px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #72e6ee,
+            #e94791
+        );
+
+    box-shadow:
+        0 0 10px #72e6ee;
+
+    transform-origin: left;
+
+    animation:
+        progressReveal 1.5s ease forwards;
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.card-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.06);
+
+    color: #596365;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+}
+
+
+.arrow {
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #72e6ee;
+
+    background:
+        rgba(114,230,238,0.06);
+
+    border:
+        1px solid rgba(114,230,238,0.15);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.pro-skill-card:hover {
+
+    transform:
+        translateY(-14px)
+        rotateX(3deg)
+        rotateY(-3deg);
+
+    border-color:
+        rgba(114,230,238,0.7);
+
+    box-shadow:
+
+        0 15px 30px rgba(0,0,0,0.6),
+
+        0 0 20px rgba(114,230,238,0.15),
+
+        0 0 60px rgba(114,230,238,0.08);
+}
+
+
+.pro-skill-card:hover .card-shine {
+
+    left: 120%;
+
+}
+
+
+.pro-skill-card:hover .skill-icon {
+
+    transform:
+        translateY(-4px)
+        rotate(-5deg)
+        scale(1.08);
+
+    box-shadow:
+
+        0 0 15px rgba(114,230,238,0.25),
+
+        inset 0 0 20px rgba(114,230,238,0.1);
+}
+
+
+.pro-skill-card:hover h3 {
+
+    color: #72e6ee;
+
+    transform: translateX(4px);
+
+    text-shadow:
+        0 0 10px rgba(114,230,238,0.5);
+}
+
+
+.pro-skill-card:hover .skill-description {
+
+    color: #b6c0c2;
+}
+
+
+.pro-skill-card:hover .arrow {
+
+    transform:
+        translateX(5px);
+
+    background:
+        rgba(114,230,238,0.15);
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes cardBorder {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes gridMove {
+
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 25px 25px;
+    }
+}
+
+
+@keyframes floatingOrb {
+
+    0%,
+    100% {
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-20px,20px)
+            scale(1.15);
+    }
+}
+
+
+@keyframes progressReveal {
+
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .pro-skill-card {
+
+        min-height: 280px;
+
+    }
+
+    .card-inner {
+
+        padding: 22px;
+
+        min-height: 280px;
+
+    }
+
+    .card-inner h3 {
+
+        font-size: 19px;
+
+    }
+
+    .skill-number {
+
+        font-size: 32px;
+
+    }
+}
